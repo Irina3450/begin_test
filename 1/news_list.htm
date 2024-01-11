@@ -25,7 +25,13 @@
          {% IF NEWS_PAGES_SHOW_PREVIOUS %}   
           <li><a class="pagination-prev" href="?sid={NEWS_SECTION_ID}&page={NEWS_PAGES_PREVIOUS}" title="Предыдущая страница"></a></li>
          {% ENDIF %}
-         
+         {% FOR news_pages %}
+            {% IF news_pages.CURRENT %}
+              <li class="current"><span>{news_pages.PAGE}</span></li>
+            {% ELSE %}
+              <li><a href="?sid={NEWS_SECTION_ID}&page={news_pages.PAGE}">{news_pages.PAGE}</a></li>
+            {% ENDIF %}
+         {% ENDFOR %}
          {% IF NEWS_PAGES_SHOW_NEXT %}
           <li><a class="pagination-next" href="?sid={NEWS_SECTION_ID}&page={NEWS_PAGES_NEXT}" title="Следующая страница"></a></li>
          {% ENDIF %}
